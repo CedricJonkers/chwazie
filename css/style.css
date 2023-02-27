@@ -1,0 +1,34 @@
+#screen1, #screen2 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#startButton {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 0.5;
+}
+
+.highlight {
+  animation: celebration 2s linear infinite;
+}
+
+@keyframes celebration {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
