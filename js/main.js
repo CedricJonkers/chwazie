@@ -1,16 +1,23 @@
-const touchArea = document.getElementById('touch-area');
+const users = document.querySelectorAll('.user');
 
-touchArea.addEventListener('touchstart', function(event) {
-  event.preventDefault();
-  const touch = event.touches[0];
-  touchArea.innerHTML = `You're using finger ${touch.identifier}`;
-});
+function pickRandomFinger() {
+  const fingers = ['thumb', 'index finger', 'middle finger', 'ring finger', 'pinky'];
+  const randomIndex = Math.floor(Math.random() * fingers.length);
+  return fingers[randomIndex];
+}
 
-touchArea.addEventListener('touchmove', function(event) {
-  event.preventDefault();
-});
-
-touchArea.addEventListener('touchend', function(event) {
-  event.preventDefault();
-  touchArea.innerHTML = `Touch the screen to see which finger you're using`;
+users.forEach(user => {
+  const button = user.querySelector('button');
+  const result = user.querySelector('.result');
+  button.addEventListener('touchstart', function(event) {
+    event.preventDefault();
+    const finger = pickRandomFinger();
+    result.innerHTML = `You picked ${finger}`;
+  });
+  button.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+  });
+  button.addEventListener('touchend', function(event) {
+    event.preventDefault();
+  });
 });
