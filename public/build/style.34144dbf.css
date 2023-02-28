@@ -1,0 +1,2 @@
+.board{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);width:300px;height:300px;margin:20px auto;border:2px solid #000}.cell{display:flex;justify-content:center;align-items:center;font-size:4rem;cursor:pointer}.cell:hover{background-color:#d3d3d3}
+/*# sourceMappingURL=/style.34144dbf.css.map */

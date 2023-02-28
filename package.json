@@ -1,0 +1,28 @@
+{
+  "name": "chwazie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "parcel build public/index.html --out-dir public/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CedricJonkers/chwazie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CedricJonkers/chwazie/issues"
+  },
+  "homepage": "https://github.com/CedricJonkers/chwazie#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "socket.io": "^4.6.1"
+  }
+}
