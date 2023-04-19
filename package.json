@@ -1,0 +1,20 @@
+{
+  "name": "chwazie",
+  "version": "1.0.0",
+  "description": "frontend:\r -> npx live-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CedricJonkers/chwazie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CedricJonkers/chwazie/issues"
+  },
+  "homepage": "https://github.com/CedricJonkers/chwazie#readme"
+}
