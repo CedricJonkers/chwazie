@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server",
-    "build": "mkdir -p dist/frontend && cp frontend/index.html frontend/index.js dist/frontend/"
+    "build": "mkdir -p dist/frontend && cp frontend/index.html frontend/index.js build/"
   },
   "repository": {
     "type": "git",
