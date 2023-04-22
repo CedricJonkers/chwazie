@@ -1,0 +1,10 @@
+[build]
+  publish = "frontend"
+  command = "npm run build"
+
+[dev]
+  command = "npx live-server frontend"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://localhost:3000/:splat"
