@@ -9,10 +9,19 @@
         top: 0;
         left: 0;
       }
+      #winner-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3em;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
     <canvas id="myCanvas"></canvas>
+    <h2 id="winner-text"></h2>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
     integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -30,7 +30,6 @@ io.on('connection', socket => {
   socket.on('draw-circle', coords => {
     users[socket.id].x = coords.x;
     users[socket.id].y = coords.y;
-  
     // Notify all clients to draw a new circle 
     io.emit('draw-circle', {
       x: coords.x,
@@ -53,9 +52,15 @@ io.on('connection', socket => {
     });
   });
 
+  socket.on('choose-winner', () => {
+    chooseRandomUser();
+  });
+
   // Handle mouse up events
   socket.on('stop-drawing', () => {
     // Notify all clients to stop drawing
+    delete users[socket.id];
+    console.log(Object.keys(users).length);
     io.emit('stop-drawing', socket.id);
   });
     
@@ -80,6 +85,20 @@ function getRandomColor() {
   }
   return color;
 }
+
+function chooseRandomUser() {
+  if (Object.keys(users).length >= 2) {
+    setTimeout(() => {      
+    const userIds = Object.keys(users);
+    const randomUserId = userIds[Math.floor(Math.random() * userIds.length)];
+    console.log('Random user id:', randomUserId);
+    io.emit('winner-chosen', randomUserId),
+    5000});
+  } else {
+    console.log('Not enough users to choose a winner');
+  }
+}
+
 
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
