@@ -3,7 +3,7 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let isDrawing = false;
-let x, y;
+let x = 0, y = 0;
 let color;
 let socket = io("http://localhost:3000");
 
@@ -13,14 +13,18 @@ socket.on('user-joined', users => {
 
 socket.on('draw-circle', data => {
     drawCircle(data.x, data.y, data.color);
-  });
+});
 
 socket.on('user-left', users => {
-    console.log('User left:', users); 
+    console.log('User left:', users);
 });
 
 socket.on('move-circle', data => {
     drawCircle(data.x, data.y, data.color);
+});
+
+socket.on('stop-drawing', () => {   
+    clearCircle();
 });
 
 canvas.addEventListener('mousedown', startDrawing);
@@ -34,13 +38,14 @@ function startDrawing(event) {
     isDrawing = true;
     color = getRandomColor();
     if (event.touches) {
-      x = event.touches[0].clientX;
-      y = event.touches[0].clientY;
+        x = event.touches[0].clientX;
+        y = event.touches[0].clientY;
     } else {
-      x = event.clientX;
-      y = event.clientY;
-    }  
-  }
+        x = event.clientX;
+        y = event.clientY;
+    }
+    drawCircle(x, y, color);
+}
 
 function moveCircle(event) {
     if (!isDrawing) {
@@ -55,27 +60,22 @@ function moveCircle(event) {
         y = event.clientY;
     }
 
-    clearCanvas();
     drawCircle(x, y, color);
     socket.emit('draw-circle', { x, y, color, userId: socket.id });
 }
 
 function stopDrawing(event) {
     isDrawing = false;
-    clearCanvas();
     socket.emit('stop-drawing');
 }
 
 function drawCircle(x, y, color) {
     const radius = 30;
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
     context.arc(x, y, radius, 0, 2 * Math.PI);
     context.fillStyle = color;
     context.fill();
-}
-
-function clearCanvas() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function getRandomColor() {
@@ -85,4 +85,7 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+function clearCircle() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }

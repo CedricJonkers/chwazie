@@ -81,10 +81,6 @@ function getRandomColor() {
   return color;
 }
 
-function clearCanvas() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-}
-
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
