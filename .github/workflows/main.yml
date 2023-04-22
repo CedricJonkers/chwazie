@@ -1,0 +1,25 @@
+name: Netlify Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Build frontend
+        run: npm run build
+        working-directory: frontend
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1
+        with:
+          publish-dir: frontend/build
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: Pn0QM6Fzr0cbrAy55Li4v_k44gwoXVvyppXEuv-kN3E
+          NETLIFY_SITE_ID: de94fe48-8f96-4e24-bf84-549115072b8c
